@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.lightGray,
     },
     icon: {
-        fontSize: SIZE,
+        fontSize: SIZE * E2,
         color: Colors.darkGray,
     }
 })
