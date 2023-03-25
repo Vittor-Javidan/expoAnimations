@@ -1,5 +1,7 @@
-import { Text, View } from "react-native"
+import { StyleSheet, Text } from "react-native"
 import { useSharedValue } from "react-native-reanimated"
+import Layout from "../../components/Layout"
+import Colors from "../../Constants/Colors"
 
 export default  function PracticeGestures(): JSX.Element {
 
@@ -7,8 +9,18 @@ export default  function PracticeGestures(): JSX.Element {
     const coordinateY = useSharedValue(0)
 
     return (
-        <View>
+        <Layout
+            navBarTitle="Gestures"
+            childrenViewStyle={styles.container}
+            goBackRoute={'/MainMenu'}
+        >
             <Text>Gestures</Text>
-        </View>
+        </Layout>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: Colors.black
+    },
+})
