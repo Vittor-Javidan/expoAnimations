@@ -2,8 +2,8 @@ import Ionicons from '@expo/vector-icons/Ionicons'
 import { useRouter } from 'expo-router'
 import { Href } from 'expo-router/src/link/href'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
-import Colors from '../Constants/Colors'
-import { E, E2, E4, SIZE } from '../Constants/Sizes'
+import Colors from '../../Constants/Colors'
+import { E, E2, E4, SIZE } from '../../Constants/Sizes'
 
 export default function Navbar(props: {
     title: string

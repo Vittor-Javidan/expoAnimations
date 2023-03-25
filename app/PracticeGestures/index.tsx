@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native"
 import { PanGestureHandler } from "react-native-gesture-handler"
 import Animated from "react-native-reanimated"
-import Layout from "../../components/Layout"
+import Layout from "../../components/Layout/Layout"
 import Colors from "../../Constants/Colors"
 import { squareAnimations } from "./animations"
 

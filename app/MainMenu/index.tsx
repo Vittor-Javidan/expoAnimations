@@ -1,7 +1,7 @@
 import { useRouter } from 'expo-router'
 import { Href } from 'expo-router/src/link/href'
 import { Pressable, StyleSheet, Text } from 'react-native'
-import Layout from '../../components/Layout'
+import Layout from '../../components/Layout/Layout'
 import Colors from '../../Constants/Colors'
 import { E, SIZE } from '../../Constants/Sizes'
 
