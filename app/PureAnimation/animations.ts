@@ -1,7 +1,7 @@
 import { useAnimatedStyle, withRepeat, withSequence, withTiming } from 'react-native-reanimated';
 
 
-export default function squareAnimation() {
+export default function PureAnimation() {
 
     let SQUARE_COORDINATE_CHANGING = 100
 

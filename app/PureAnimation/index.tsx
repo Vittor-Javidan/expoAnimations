@@ -1,5 +1,6 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import Animated from 'react-native-reanimated';
+import Layout from "../../components/Layout";
 import squareAnimation from './animations';
 
 const SQUARE_SIZE = 100
@@ -7,11 +8,15 @@ const SQUARE_SIZE = 100
 export default function Page2Component(): JSX.Element {
 
     return (
-        <View style={styles.container}>
+        <Layout
+            navBarTitle="Pure Animations"
+            childrenViewStyle={styles.container}
+            goBackRoute={'/MainMenu'}
+        >
             <Animated.View
                 style={[styles.square, squareAnimation()]}
             ></Animated.View>
-        </View>
+        </Layout>
     )
 }
 
@@ -20,7 +25,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#0F0"
     },
     square: {
         width: SQUARE_SIZE,
