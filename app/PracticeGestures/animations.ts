@@ -1,12 +1,12 @@
 import { PanGestureHandlerGestureEvent } from "react-native-gesture-handler"
 import { useAnimatedGestureHandler, useAnimatedStyle, useSharedValue } from "react-native-reanimated"
-import Coordenates from "../../TempData/coordenates"
+import CoordenatesTempDatabase from "../../TempData/coordenates"
 
-export function squareAnimations() {
+export function squareDrag() {
 
     const color = useSharedValue("#00F")
-    const coordenateX = useSharedValue(Coordenates.x)
-    const coordenateY = useSharedValue(Coordenates.y)
+    const coordenateX = useSharedValue(CoordenatesTempDatabase.x)
+    const coordenateY = useSharedValue(CoordenatesTempDatabase.y)
 
     const panGestureHandler = useAnimatedGestureHandler<PanGestureHandlerGestureEvent, { x: number, y: number}>({
         onStart: (event, context) => {
@@ -17,15 +17,11 @@ export function squareAnimations() {
         onActive: (event, context) => {
             coordenateX.value = event.translationX + context.x
             coordenateY.value = event.translationY + context.y
-            Coordenates.x = event.translationX + context.x
-            Coordenates.y = event.translationY + context.y
-            console.log(coordenateX.value)
-            console.log(coordenateY.value)
+            CoordenatesTempDatabase.x = event.translationX + context.x
+            CoordenatesTempDatabase.y = event.translationY + context.y
             color.value = "#F00"
         },
-        onFinish: (event, context) => {
-            console.log(`context: x = ${context.x} y = ${context.y}`)
-            console.log(`ACABOU X:${event.translationX} Y:${event.translationY}`)
+        onFinish: () => {
             color.value = "#00F"
         }
     })

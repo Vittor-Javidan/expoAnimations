@@ -3,13 +3,13 @@ import { PanGestureHandler } from "react-native-gesture-handler"
 import Animated from "react-native-reanimated"
 import Layout from "../../components/Layout/Layout"
 import Colors from "../../Constants/Colors"
-import { squareAnimations } from "./animations"
+import { squareDrag } from "./animations"
 
 const SQUARE_SIZE = 100
 
 export default  function PracticeGestures(): JSX.Element {
     
-    const animations = squareAnimations()
+    const dragAnimation = squareDrag()
 
     return (
         <Layout
@@ -18,10 +18,10 @@ export default  function PracticeGestures(): JSX.Element {
             goBackRoute={'/MainMenu'}
         >
             <PanGestureHandler
-                onGestureEvent={animations.panGestureHandler}
+                onGestureEvent={dragAnimation.panGestureHandler}
             >
                 <Animated.View
-                    style={[styles.square, animations.animatedStyle]}
+                    style={[styles.square, dragAnimation.animatedStyle]}
                 />
             </PanGestureHandler>
         </Layout>
