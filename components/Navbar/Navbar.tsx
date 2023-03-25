@@ -1,9 +1,11 @@
 import Ionicons from '@expo/vector-icons/Ionicons'
 import { useRouter } from 'expo-router'
 import { Href } from 'expo-router/src/link/href'
-import { Pressable, StyleSheet, Text, View } from 'react-native'
-import Colors from '../../Constants/Colors'
-import { E, E2, E4, SIZE } from '../../Constants/Sizes'
+import { Text, View } from 'react-native'
+import { PanGestureHandler } from 'react-native-gesture-handler'
+import Animated from 'react-native-reanimated'
+import { backButtonSlide } from './animations'
+import { styles } from './styles'
 
 export default function Navbar(props: {
     title: string
@@ -11,6 +13,7 @@ export default function Navbar(props: {
 }): JSX.Element {
 
     const route = useRouter()
+    const slideAnimation = backButtonSlide()
 
     return (
         <View 
@@ -28,55 +31,21 @@ export default function Navbar(props: {
                 {props.title}
             </Text>
             {props.goBackRoute !== undefined && (
-                <Pressable 
-                    style={styles.backButtonContainer}
-                    onPress={() => {
-                        if(props.goBackRoute) {
-                            route.push(props.goBackRoute)
-                        }
-                    }}
+                <PanGestureHandler
+                    onGestureEvent={slideAnimation.panGestureHandler}
                 >
-                    <Ionicons name='chevron-back' style={styles.icon}/>
-                </Pressable>
+                    <Animated.View
+                        style={[styles.animatedView, slideAnimation.animatedStyle]}
+                        onTouchEnd={() => {
+                            if(props.goBackRoute) {
+                                route.push(props.goBackRoute)
+                            }
+                        }}
+                    >
+                        <Ionicons name='chevron-back' style={styles.icon}/>
+                    </Animated.View>
+                </PanGestureHandler>
             )}
         </View>
     )
 }
-const styles = StyleSheet.create({
-    navbarWithoutButton: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: SIZE * E2,
-        backgroundColor: Colors.darkGray,
-        borderBottomColor: Colors.lightGray,
-        borderBottomWidth: 2
-    },
-    navbarWithButton: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        height: SIZE * E2,
-        backgroundColor: Colors.darkGray,
-    },
-    title: {
-        paddingLeft: SIZE / E4,
-        fontSize: SIZE * E,
-        color: Colors.white
-    },
-    titleWithButton: {
-        paddingLeft: SIZE / E4,
-        fontSize: SIZE,
-        color: Colors.white
-    },
-    backButtonContainer: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: SIZE * E2,
-        width: SIZE * E2,
-        backgroundColor: Colors.lightGray,
-    },
-    icon: {
-        fontSize: SIZE * E2,
-        color: Colors.darkGray,
-    }
-})
