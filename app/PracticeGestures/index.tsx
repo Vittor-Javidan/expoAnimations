@@ -1,26 +1,44 @@
-import { StyleSheet, Text } from "react-native"
-import { useSharedValue } from "react-native-reanimated"
+import { StyleSheet } from "react-native"
+import { PanGestureHandler } from "react-native-gesture-handler"
+import Animated from "react-native-reanimated"
 import Layout from "../../components/Layout"
 import Colors from "../../Constants/Colors"
+import { squareAnimations } from "./animations"
+
+const SQUARE_SIZE = 100
 
 export default  function PracticeGestures(): JSX.Element {
-
-    const coordinateX = useSharedValue(0)
-    const coordinateY = useSharedValue(0)
+    
+    const animations = squareAnimations()
 
     return (
         <Layout
-            navBarTitle="Gestures"
+            navBarTitle="Practice Gestures"
             childrenViewStyle={styles.container}
             goBackRoute={'/MainMenu'}
         >
-            <Text>Gestures</Text>
+            <PanGestureHandler
+                onGestureEvent={animations.panGestureHandler}
+            >
+                <Animated.View
+                    style={[styles.square, animations.animatedStyle]}
+                />
+            </PanGestureHandler>
         </Layout>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: Colors.black
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: Colors.black,
     },
+    square: {
+        height: SQUARE_SIZE,
+        width: SQUARE_SIZE,
+        backgroundColor: "#00F",
+        borderRadius: 20,
+    }
 })

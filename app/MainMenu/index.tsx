@@ -30,6 +30,7 @@ export default function MainMenu(): JSX.Element {
         >
             {menuItems.map(item => (
                 <Pressable
+                    key={item.name}
                     style={styles.menuItemButton}
                     onPress={() => {
                         router.push(item.href)
