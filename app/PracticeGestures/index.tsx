@@ -1,15 +1,15 @@
-import { StyleSheet } from "react-native"
 import { PanGestureHandler } from "react-native-gesture-handler"
 import Animated from "react-native-reanimated"
 import Layout from "../../components/Layout/Layout"
-import Colors from "../../Constants/Colors"
 import { squareDrag } from "./animations"
-
-const SQUARE_SIZE = 100
+import { styles } from "./styles"
+import CoordsData from "./volatileDB"
 
 export default  function PracticeGestures(): JSX.Element {
     
-    const dragAnimation = squareDrag()
+    const animations = {
+        squareDrag: squareDrag(CoordsData.x, CoordsData.y)
+    }
 
     return (
         <Layout
@@ -18,27 +18,16 @@ export default  function PracticeGestures(): JSX.Element {
             goBackRoute={'/MainMenu'}
         >
             <PanGestureHandler
-                onGestureEvent={dragAnimation.panGestureHandler}
+                onGestureEvent={animations.squareDrag.panGestureHandler}
+                onEnded={() => {
+                    CoordsData.x = animations.squareDrag.coordenateX.value
+                    CoordsData.y = animations.squareDrag.coordenateY.value
+                }}
             >
                 <Animated.View
-                    style={[styles.square, dragAnimation.animatedStyle]}
+                    style={[styles.square, animations.squareDrag.animatedStyle]}
                 />
             </PanGestureHandler>
         </Layout>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: Colors.black,
-    },
-    square: {
-        height: SQUARE_SIZE,
-        width: SQUARE_SIZE,
-        backgroundColor: "#00F",
-        borderRadius: 20,
-    }
-})

@@ -1,25 +1,11 @@
-import { PanGestureHandlerGestureEvent } from "react-native-gesture-handler"
-import { useAnimatedGestureHandler, useAnimatedStyle, useSharedValue } from "react-native-reanimated"
+import { PanGestureHandlerGestureEvent } from "react-native-gesture-handler";
+import { useAnimatedGestureHandler, useAnimatedStyle, useSharedValue } from "react-native-reanimated";
 
-class CoordsData {
-
-    private static x = 0
-    private static y = 0
-
-    static saveData(coordX: number, coordY: number): void {
-        this.x = coordX
-        this.y = coordY
-    }
-
-    static getX(): number { return this.x }
-    static getY(): number { return this.y }
-}
-
-export function squareDrag() {
+export function squareDrag(coordX: number, coordY: number) {
 
     const color = useSharedValue("#00F")
-    const coordenateX = useSharedValue(CoordsData.getX())
-    const coordenateY = useSharedValue(CoordsData.getY())
+    const coordenateX = useSharedValue(coordX)
+    const coordenateY = useSharedValue(coordY)
 
     const panGestureHandler = useAnimatedGestureHandler<PanGestureHandlerGestureEvent, { x: number, y: number}>({
         
@@ -33,12 +19,6 @@ export function squareDrag() {
 
             coordenateX.value = event.translationX + context.x
             coordenateY.value = event.translationY + context.y
-
-            CoordsData.saveData(
-                event.translationX + context.x,
-                event.translationY + context.y
-            )
-
             color.value = "#F00"
         },
         
