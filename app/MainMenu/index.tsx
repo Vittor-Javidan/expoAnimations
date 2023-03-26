@@ -1,9 +1,11 @@
 import { useRouter } from 'expo-router'
 import { Href } from 'expo-router/src/link/href'
-import { Pressable, StyleSheet, Text } from 'react-native'
+import { Pressable, ScrollView, Text } from 'react-native'
+import { PanGestureHandler } from 'react-native-gesture-handler'
+import Animated from 'react-native-reanimated'
 import Layout from '../../components/Layout/Layout'
-import Colors from '../../Constants/Colors'
-import { E, SIZE } from '../../Constants/Sizes'
+import { buttonAnimation } from './animations'
+import { styles } from './styles'
 
 const menuItems: {
     name: string
@@ -28,37 +30,54 @@ export default function MainMenu(): JSX.Element {
             navBarTitle='MainMenu'
             childrenViewStyle={styles.mainContainer}
         >
-            {menuItems.map(item => (
+            <ScrollView>
+                {menuItems.map(item => (
+                    <MenuItem 
+                        key={item.name}
+                        itemName={item.name}
+                        route={item.href}
+                    />
+                ))}
+            </ScrollView>
+            <MenuItem 
+                itemName='Config'
+                route={'/MainMenu'}
+            />
+        </Layout>
+    )
+}
+
+
+function MenuItem(props: {
+    route: Href
+    itemName: string
+}): JSX.Element {
+
+    const router = useRouter()
+    const animations = {
+        buttons: buttonAnimation()
+    }
+
+    return (
+        <PanGestureHandler
+            onGestureEvent={animations.buttons.panGestureHandler}
+        >
+            <Animated.View
+                style={[styles.menuItemButton, animations.buttons.animatedStyle]}
+            >
                 <Pressable
-                    key={item.name}
-                    style={styles.menuItemButton}
+                    style={styles.pressableArea}
                     onPress={() => {
-                        router.push(item.href)
+                        router.push(props.route)
                     }}
                 >
                     <Text 
                         style={styles.menuItemText}
                     >
-                        {item.name}
+                        {props.itemName}
                     </Text>
                 </Pressable>
-            ))}
-        </Layout>
+            </Animated.View>
+        </PanGestureHandler>
     )
 }
-
-const styles = StyleSheet.create({
-    mainContainer: {
-        flex: 1,
-    },
-    menuItemButton: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: SIZE * E,
-        backgroundColor: Colors.lightGray
-    },
-    menuItemText: {
-        fontSize: SIZE,
-        color: Colors.black,
-    },
-})
