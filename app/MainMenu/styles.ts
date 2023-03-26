@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import Colors from "../../Constants/Colors";
-import { E2, SIZE } from "../../Constants/Sizes";
+import { E2, E4, SIZE } from "../../Constants/Sizes";
 
 export const styles = StyleSheet.create({
     mainContainer: {
@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     },
     menuItemButton: {
         padding: SIZE / E2,
-        marginTop: SIZE / E2,
+        marginTop: SIZE / E4,
         backgroundColor: Colors.lightGray
     },
     pressableArea: {
