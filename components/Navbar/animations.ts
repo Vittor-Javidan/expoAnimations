@@ -20,26 +20,19 @@ export function backButtonSlide() {
         },
         onActive: (event) => {
             if(coordX.value > BUTTON_WIDTH - DEVICE_WIDTH ) {
-                coordX.value = event.translationX
                 backgroundColor.value = "#F00"
             } else {
                 backgroundColor.value = "#0F0"
-                actionConfirmed.value = true
             }
         },
         onFinish: () => {
-            coordX.value = 0
             backgroundColor.value = Colors.lightGray
         }
     })
 
     const animatedStyle = useAnimatedStyle(() => {
         return {
-            backgroundColor: backgroundColor.value,
-            width: width.value,
-            transform: [
-                { translateX: coordX.value}
-            ],
+            backgroundColor: backgroundColor.value
         }
     })
 

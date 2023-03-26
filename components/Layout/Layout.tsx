@@ -1,7 +1,7 @@
 import { Href } from 'expo-router/src/link/href'
 import { ReactNode } from 'react'
 import { StatusBar, StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
-import Navbar from '../Navbar/Navbar'
+import Navbar from '../Navbar'
 
 
 export default function Layout(props: {
