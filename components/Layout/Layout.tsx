@@ -1,8 +1,8 @@
 import { Href } from 'expo-router/src/link/href'
 import { ReactNode } from 'react'
-import { StatusBar, StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
+import { StatusBar, StyleProp, View, ViewStyle } from 'react-native'
 import Navbar from '../Navbar'
-
+import { styles } from './styles'
 
 export default function Layout(props: {
     navBarTitle: string
@@ -21,16 +21,20 @@ export default function Layout(props: {
                 title={props.navBarTitle}
                 goBackRoute={props.goBackRoute}
             />
-            <View style={props.childrenViewStyle}>
+            <ChildrenArea style={props.childrenViewStyle}>
                 {props.children}
-            </View>
+            </ChildrenArea>
         </View>
     )
 }
 
-const styles = StyleSheet.create({
-    mainContainer: {
-        flex: 1,
-        backgroundColor: "#000"
-    },
-})
+function ChildrenArea(props: {
+    style: StyleProp<ViewStyle>
+    children: ReactNode
+}): JSX.Element {
+    return (
+        <View style={props.style}>
+            {props.children}
+        </View>
+    )
+}
