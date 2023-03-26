@@ -2,7 +2,7 @@ import { PanGestureHandlerGestureEvent } from "react-native-gesture-handler"
 import { useAnimatedGestureHandler, useAnimatedStyle, useSharedValue } from "react-native-reanimated"
 import Colors from "../../Constants/Colors"
 
-export function buttonAnimation() {
+export function animation_WhitePress() {
 
     const color = useSharedValue(Colors.lightGray)
 

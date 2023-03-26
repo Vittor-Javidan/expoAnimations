@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import Animated from 'react-native-reanimated';
 import Layout from "../../components/Layout/Layout";
-import squareAnimation from './animations';
+import animation_CrazySquare from './animations';
 
 const SQUARE_SIZE = 100
 
@@ -14,7 +14,7 @@ export default function Page2Component(): JSX.Element {
             goBackRoute={'/MainMenu'}
         >
             <Animated.View
-                style={[styles.square, squareAnimation()]}
+                style={[styles.square, animation_CrazySquare()]}
             ></Animated.View>
         </Layout>
     )

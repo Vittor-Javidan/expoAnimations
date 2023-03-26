@@ -4,7 +4,7 @@ import { Pressable, ScrollView, Text } from 'react-native'
 import { PanGestureHandler } from 'react-native-gesture-handler'
 import Animated from 'react-native-reanimated'
 import Layout from '../../components/Layout/Layout'
-import { buttonAnimation } from './animations'
+import { animation_WhitePress } from './animations'
 import { styles } from './styles'
 
 const menuItems: {
@@ -22,9 +22,6 @@ const menuItems: {
 ]
 
 export default function MainMenu(): JSX.Element {
-    
-    const router = useRouter()
-
     return (
         <Layout
             navBarTitle='MainMenu'
@@ -55,7 +52,7 @@ function MenuItem(props: {
 
     const router = useRouter()
     const animations = {
-        buttons: buttonAnimation()
+        buttons: animation_WhitePress()
     }
 
     return (

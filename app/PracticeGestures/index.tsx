@@ -1,14 +1,14 @@
 import { PanGestureHandler } from "react-native-gesture-handler"
 import Animated from "react-native-reanimated"
 import Layout from "../../components/Layout/Layout"
-import { squareDrag } from "./animations"
+import { animation_SquareDrag } from "./animations"
 import { styles } from "./styles"
 import CoordsData from "./volatileDB"
 
 export default  function PracticeGestures(): JSX.Element {
     
     const animations = {
-        squareDrag: squareDrag(CoordsData.x, CoordsData.y)
+        squareDrag: animation_SquareDrag(CoordsData.x, CoordsData.y)
     }
 
     return (

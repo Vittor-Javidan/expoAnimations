@@ -2,7 +2,7 @@ import { PanGestureHandlerGestureEvent } from "react-native-gesture-handler";
 import { useAnimatedGestureHandler, useAnimatedStyle, useSharedValue } from "react-native-reanimated";
 import Colors from "../../Constants/Colors";
 
-export function animation_backButton() {
+export function animation_BackButton() {
 
     const backgroundColor = useSharedValue<string>(Colors.lightGray)
     const actionConfirmed = useSharedValue<boolean>(false)

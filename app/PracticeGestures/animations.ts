@@ -1,7 +1,7 @@
 import { PanGestureHandlerGestureEvent } from "react-native-gesture-handler";
 import { useAnimatedGestureHandler, useAnimatedStyle, useSharedValue } from "react-native-reanimated";
 
-export function squareDrag(coordX: number, coordY: number) {
+export function animation_SquareDrag(coordX: number, coordY: number) {
 
     const color = useSharedValue("#00F")
     const coordenateX = useSharedValue(coordX)
