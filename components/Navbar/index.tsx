@@ -1,7 +1,8 @@
 import Ionicons from '@expo/vector-icons/Ionicons'
 import { useRouter } from 'expo-router'
 import { Href } from 'expo-router/src/link/href'
-import { Text, View } from 'react-native'
+import { ReactNode } from 'react'
+import { StyleProp, Text, TextStyle, View } from 'react-native'
 import { PanGestureHandler } from 'react-native-gesture-handler'
 import Animated from 'react-native-reanimated'
 import { backButtonSlide } from './animations'
@@ -12,9 +13,6 @@ export default function Navbar(props: {
     goBackRoute?: Href
 }): JSX.Element {
 
-    const route = useRouter()
-    const slideAnimation = backButtonSlide()
-
     return (
         <View 
             style={props.goBackRoute
@@ -22,30 +20,57 @@ export default function Navbar(props: {
                 : styles.navbarWithoutButton
             }
         >
-            <Text 
+            <Title 
                 style={props.goBackRoute
                     ? styles.titleWithButton
                     : styles.title
                 }
             >
                 {props.title}
-            </Text>
+            </Title>
             {props.goBackRoute !== undefined && (
-                <PanGestureHandler
-                    onGestureEvent={slideAnimation.panGestureHandler}
-                >
-                    <Animated.View
-                        style={[styles.animatedView, slideAnimation.animatedStyle]}
-                        onTouchEnd={() => {
-                            if(props.goBackRoute) {
-                                route.push(props.goBackRoute)
-                            }
-                        }}
-                    >
-                        <Ionicons name='chevron-back' style={styles.icon}/>
-                    </Animated.View>
-                </PanGestureHandler>
+                <GoBackButton
+                    goBackRoute={props.goBackRoute}
+                />
             )}
         </View>
+    )
+}
+
+function Title(props: {
+    style: StyleProp<TextStyle>
+    children: ReactNode
+}): JSX.Element {
+    return (
+        <Text 
+            style={props.style}
+        >
+            {props.children}
+        </Text>
+    )
+}
+
+function GoBackButton(props: {
+    goBackRoute: Href
+}) {
+
+    const route = useRouter()
+    const slideAnimation = backButtonSlide()
+
+    return (
+        <PanGestureHandler
+            onGestureEvent={slideAnimation.panGestureHandler}
+        >
+            <Animated.View
+                style={[styles.animatedView, slideAnimation.animatedStyle]}
+                onTouchEnd={() => {
+                    if(props.goBackRoute) {
+                        route.push(props.goBackRoute)
+                    }
+                }}
+            >
+                <Ionicons name='chevron-back' style={styles.icon}/>
+            </Animated.View>
+        </PanGestureHandler>
     )
 }
