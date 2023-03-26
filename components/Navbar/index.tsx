@@ -5,7 +5,7 @@ import { ReactNode } from 'react'
 import { StyleProp, Text, TextStyle, View } from 'react-native'
 import { PanGestureHandler } from 'react-native-gesture-handler'
 import Animated from 'react-native-reanimated'
-import { backButtonSlide } from './animations'
+import { animation_backButton } from './animations'
 import { styles } from './styles'
 
 export default function Navbar(props: {
@@ -55,7 +55,7 @@ function GoBackButton(props: {
 }) {
 
     const route = useRouter()
-    const slideAnimation = backButtonSlide()
+    const slideAnimation = animation_backButton()
 
     return (
         <PanGestureHandler
