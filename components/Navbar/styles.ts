@@ -1,30 +1,32 @@
 import { StyleSheet } from "react-native";
 import Colors from "../../Constants/Colors";
-import { E, E2, SIZE } from "../../Constants/Sizes";
+import { E, E2, E4, SIZE } from "../../Constants/Sizes";
 
 export const styles = StyleSheet.create({
     navbarWithoutButton: {
-        justifyContent: 'center',
-        alignItems: 'center',
         backgroundColor: Colors.darkGray,
-        borderBottomColor: Colors.lightGray,
-        borderBottomWidth: 2
     },
     navbarWithButton: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center',
         backgroundColor: Colors.darkGray,
     },
     title: {
+        padding: SIZE / E,
+        textAlign: 'center',
+        textAlignVertical: 'center',
         fontSize: SIZE * E,
         color: Colors.white
     },
     titleWithButton: {
-        fontSize: SIZE,
+        width: '75%',
+        padding: SIZE / E4,
+        fontSize: SIZE * E,
         color: Colors.white
     },
     animatedView: {
+        justifyContent: 'center',
+        width: '25%',
         backgroundColor: Colors.lightGray,
     },
     icon: {
