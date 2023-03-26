@@ -37,8 +37,8 @@ export default function MainMenu(): JSX.Element {
                 ))}
             </ScrollView>
             <MenuItem 
-                itemName='Config'
-                route={'/MainMenu'}
+                itemName='Settings'
+                route={'/Settings'}
             />
         </Layout>
     )

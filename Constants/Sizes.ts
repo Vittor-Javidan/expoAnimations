@@ -1,7 +1,7 @@
-
-
-/** Reference UI Size `SIZE = 6% of device Height`*/
-export const SIZE = 40
+export class AppSettings {
+    static elements = 40
+    static font = 40
+}
 
 /** Aurea Constant `E = 1.66`*/
 export const E = 1.6

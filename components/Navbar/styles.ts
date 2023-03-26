@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import Colors from "../../Constants/Colors";
-import { E, E2, E4, SIZE } from "../../Constants/Sizes";
+import { AppSettings, E, E2, E4 } from "../../Constants/Sizes";
 
 export const styles = StyleSheet.create({
     navbarWithoutButton: {
@@ -12,16 +12,17 @@ export const styles = StyleSheet.create({
         backgroundColor: Colors.darkGray,
     },
     title: {
-        padding: SIZE / E,
+        padding: AppSettings.elements / E,
         textAlign: 'center',
         textAlignVertical: 'center',
-        fontSize: SIZE * E,
+        fontSize: AppSettings.font * E,
         color: Colors.white
     },
     titleWithButton: {
         width: '75%',
-        padding: SIZE / E4,
-        fontSize: SIZE * E,
+        alignSelf: 'center',
+        padding: AppSettings.elements / E4,
+        fontSize: AppSettings.font * E,
         color: Colors.white
     },
     animatedView: {
@@ -30,7 +31,7 @@ export const styles = StyleSheet.create({
         backgroundColor: Colors.lightGray,
     },
     icon: {
-        fontSize: SIZE * E2,
+        fontSize: AppSettings.font * E2,
         color: Colors.darkGray,
     }
 })
