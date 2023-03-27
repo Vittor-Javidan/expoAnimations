@@ -1,76 +1,39 @@
-import Ionicons from '@expo/vector-icons/Ionicons'
-import { useRouter } from 'expo-router'
+import { createContext } from 'react'
 import { Href } from 'expo-router/src/link/href'
-import { ReactNode } from 'react'
-import { StyleProp, Text, TextStyle, View } from 'react-native'
-import { PanGestureHandler } from 'react-native-gesture-handler'
-import Animated from 'react-native-reanimated'
-import { animation_BackButton } from './animations'
-import { styles } from './styles'
+
+import Navbar_GoBackButton from './GoBackButton'
+import Navbar_MainView from './MainView'
+import Navbar_Title from './Title'
+
+type NavbarProps =  {
+    goBackRoute?: Href
+    title: string
+}
+
+export const NavbarContext = createContext<NavbarProps>({ 
+    goBackRoute: "", 
+    title: ""}
+)
 
 export default function Navbar(props: {
     title: string
     goBackRoute?: Href
 }): JSX.Element {
-
+    
+    const values: NavbarProps = {
+        goBackRoute: props.goBackRoute,
+        title: props.title
+    }
+    
+    //TODO: Implementar compound pattern
     return (
-        <View 
-            style={props.goBackRoute
-                ? styles.navbarWithButton
-                : styles.navbarWithoutButton
-            }
-        >
-            <Title 
-                style={props.goBackRoute
-                    ? styles.titleWithButton
-                    : styles.title
-                }
-            >
-                {props.title}
-            </Title>
-            {props.goBackRoute !== undefined && (
-                <GoBackButton
-                    goBackRoute={props.goBackRoute}
-                />
-            )}
-        </View>
-    )
-}
+        <NavbarContext.Provider value={values}>
 
-function Title(props: {
-    style: StyleProp<TextStyle>
-    children: ReactNode
-}): JSX.Element {
-    return (
-        <Text 
-            style={props.style}
-        >
-            {props.children}
-        </Text>
-    )
-}
-
-function GoBackButton(props: {
-    goBackRoute: Href
-}) {
-
-    const route = useRouter()
-    const slideAnimation = animation_BackButton()
-
-    return (
-        <PanGestureHandler
-            onGestureEvent={slideAnimation.panGestureHandler}
-        >
-            <Animated.View
-                style={[styles.animatedView, slideAnimation.animatedStyle]}
-                onTouchEnd={() => {
-                    if(props.goBackRoute) {
-                        route.push(props.goBackRoute)
-                    }
-                }}
-            >
-                <Ionicons name='chevron-back' style={styles.icon}/>
-            </Animated.View>
-        </PanGestureHandler>
+            <Navbar_MainView>
+                <Navbar_Title />
+                <Navbar_GoBackButton />
+            </Navbar_MainView>
+            
+        </NavbarContext.Provider>
     )
 }
