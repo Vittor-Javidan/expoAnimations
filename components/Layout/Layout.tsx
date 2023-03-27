@@ -2,7 +2,7 @@ import { Href } from 'expo-router/src/link/href'
 import { ReactNode } from 'react'
 import { StatusBar, StyleProp, View, ViewStyle } from 'react-native'
 import Navbar from '../Navbar'
-import { styles } from './styles'
+import { getStyles } from './styles'
 
 export default function Layout(props: {
     navBarTitle: string
@@ -10,6 +10,9 @@ export default function Layout(props: {
     childrenViewStyle: StyleProp<ViewStyle>
     goBackRoute?: Href
 }): JSX.Element {
+
+    const styles = getStyles()
+
     return (
         <View style={styles.mainContainer}>
 

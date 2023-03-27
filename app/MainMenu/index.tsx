@@ -18,6 +18,10 @@ const menuItems: {
     {
         name: 'Practice Gestures',
         href: '/PracticeGestures'
+    },
+    {
+        name: 'Color Changing',
+        href: '/ColorChanging'
     }
 ]
 
