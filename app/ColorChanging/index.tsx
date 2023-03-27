@@ -20,7 +20,8 @@ export default function ColorChanging(): JSX.Element {
                 }}
                 animate={{
                     backgroundColor: isPressed ? "#FFF" : active ? "#0F0" : "#F00",
-                    borderRadius: isPressed ? 50 : 100
+                    borderRadius: isPressed ? 50 : 100,
+                    transform: [{rotate: isPressed ? 10 : 0}]
                 }}
                 transition={{
                     type: 'timing',
@@ -30,7 +31,8 @@ export default function ColorChanging(): JSX.Element {
             >
                 <Pressable
                     onPressIn={() => setIspressed(true)}
-                    onPressOut={() => {
+                    onPressOut={() => setIspressed(false)}
+                    onPress={() => {
                         setActive(prev => !prev)
                         setIspressed(false)
                     }}

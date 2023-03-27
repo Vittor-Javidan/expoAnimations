@@ -30,12 +30,8 @@ export default function Navbar_GoBackButton(): JSX.Element {
         >
             <Pressable
                 style={styles.pressableArea}
-                onPressIn={() => {
-                    setIspressed(true)
-                }}
-                onPressOut={() => {
-                    setIspressed(false)
-                }}
+                onPressIn={() => setIspressed(true)}
+                onPressOut={() => setIspressed(false)}
                 onPress={() => {
                     if(goBackRoute) {
                         route.push(goBackRoute)
