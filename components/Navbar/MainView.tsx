@@ -1,8 +1,8 @@
 import { ReactNode, useContext } from 'react'
 import { StyleSheet, View } from 'react-native'
 
-import { NavbarContext } from '.'
 import Colors from '../../Constants/Colors'
+import { NavbarContext } from './context'
 
 export default function Navbar_MainView(props: {
     children: ReactNode

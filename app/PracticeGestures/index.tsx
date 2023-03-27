@@ -15,7 +15,7 @@ export default  function PracticeGestures(): JSX.Element {
         <Layout
             navBarTitle="Practice Gestures"
             childrenViewStyle={styles.container}
-            goBackRoute={'/MainMenu'}
+            returnRoute={'/MainMenu'}
         >
             <PanGestureHandler
                 onGestureEvent={animations.squareDrag.panGestureHandler}

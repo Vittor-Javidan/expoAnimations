@@ -11,7 +11,7 @@ export default function Page2Component(): JSX.Element {
         <Layout
             navBarTitle="Pure Animations"
             childrenViewStyle={styles.container}
-            goBackRoute={'/MainMenu'}
+            returnRoute={'/MainMenu'}
         >
             <Animated.View
                 style={[styles.square, animation_CrazySquare()]}

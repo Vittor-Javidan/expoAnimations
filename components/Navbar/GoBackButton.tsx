@@ -4,9 +4,9 @@ import { MotiView } from 'moti'
 import { useRouter } from "expo-router"
 import Ionicons from '@expo/vector-icons/Ionicons'
 
-import { NavbarContext } from '.'
 import Colors from "../../Constants/Colors"
 import { AppSettings, E2 } from '../../Constants/Sizes'
+import { NavbarContext } from "./context"
 
 export default function Navbar_GoBackButton(): JSX.Element {
 

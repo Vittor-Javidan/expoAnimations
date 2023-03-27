@@ -4,24 +4,15 @@ import { Href } from 'expo-router/src/link/href'
 import Navbar_GoBackButton from './GoBackButton'
 import Navbar_MainView from './MainView'
 import Navbar_Title from './Title'
-
-type NavbarProps =  {
-    goBackRoute?: Href
-    title: string
-}
-
-export const NavbarContext = createContext<NavbarProps>({ 
-    goBackRoute: "", 
-    title: ""}
-)
+import { NavbarContext, NavbarProps } from './context'
 
 export default function Navbar(props: {
     title: string
-    goBackRoute?: Href
+    returnRoute?: Href
 }): JSX.Element {
     
     const values: NavbarProps = {
-        goBackRoute: props.goBackRoute,
+        goBackRoute: props.returnRoute,
         title: props.title
     }
     
@@ -31,7 +22,7 @@ export default function Navbar(props: {
 
             <Navbar_MainView>
                 <Navbar_Title />
-                <Navbar_GoBackButton />
+                {props.returnRoute && <Navbar_GoBackButton />}
             </Navbar_MainView>
             
         </NavbarContext.Provider>

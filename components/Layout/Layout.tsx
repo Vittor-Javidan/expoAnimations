@@ -8,7 +8,7 @@ export default function Layout(props: {
     navBarTitle: string
     children: ReactNode
     childrenViewStyle: StyleProp<ViewStyle>
-    goBackRoute?: Href
+    returnRoute?: Href
 }): JSX.Element {
 
     const styles = getStyles()
@@ -22,7 +22,7 @@ export default function Layout(props: {
 
             <Navbar 
                 title={props.navBarTitle}
-                goBackRoute={props.goBackRoute}
+                returnRoute={props.returnRoute}
             />
             <ChildrenArea style={props.childrenViewStyle}>
                 {props.children}

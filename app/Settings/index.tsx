@@ -4,7 +4,7 @@ export default function Settings(): JSX.Element {
     return (
         <Layout
             navBarTitle="Settings"
-            goBackRoute={"/MainMenu"}
+            returnRoute={"/MainMenu"}
             childrenViewStyle={{flex: 1, justifyContent: 'center', alignItems: 'center'}}
         >
 

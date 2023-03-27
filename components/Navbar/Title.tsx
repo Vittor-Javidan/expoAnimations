@@ -1,9 +1,9 @@
 import { useContext } from 'react'
 import { StyleSheet, Text } from 'react-native'
 
-import { NavbarContext } from '.'
 import Colors from '../../Constants/Colors'
 import { AppSettings, E } from '../../Constants/Sizes'
+import { NavbarContext } from './context'
 
 export default function Navbar_Title(): JSX.Element {
 
