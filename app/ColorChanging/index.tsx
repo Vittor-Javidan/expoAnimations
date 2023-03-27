@@ -10,7 +10,7 @@ export default function ColorChanging(): JSX.Element {
 
     return (
         <Layout
-            navBarTitle="Settings"
+            navBarTitle="Color Changing"
             goBackRoute={"/MainMenu"}
             childrenViewStyle={{flex: 1, justifyContent: 'center', alignItems: 'center'}}
         >
